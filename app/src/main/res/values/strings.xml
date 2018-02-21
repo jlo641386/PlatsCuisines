@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">PlatsCuisines</string>
+    <string name="dishNameHint">Dish\'s name</string>
+    <string name="packageSection">Package Presentations</string>
+    <string name="packof2">Pack for 2</string>
+    <string name="packof4">Pack for 4</string>
+    <string name="packof6">Pack for 6</string>
+    <string name="packof8">Pack for 8</string>
+    <string name="packof12">Pack for 12</string>
 </resources>
