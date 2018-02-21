@@ -12,7 +12,14 @@ public class Dish {
     private int conditionnePour8;
     private int conditionnePour12;
 
-    public Dish() {
+    public Dish(String nomPlat, int conditionnePour2, int conditionnePour4, int conditionnePour6,
+                int conditionnePour8, int conditionnePour12) {
+        this.nomPlat = nomPlat;
+        this.conditionnePour2 = conditionnePour2;
+        this.conditionnePour4 = conditionnePour4;
+        this.conditionnePour6 = conditionnePour6;
+        this.conditionnePour8 = conditionnePour8;
+        this.conditionnePour12 = conditionnePour12;
     }
 
     public String getNomPlat() {
