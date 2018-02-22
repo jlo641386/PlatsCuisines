@@ -8,4 +8,6 @@
     <string name="packof8">Pack for 8</string>
     <string name="packof12">Pack for 12</string>
     <string name="buttonOK">OK</string>
+    <string name="dishInfo">Dish Information</string>
+    <string name="packDisponibility">Pack Disponibility</string>
 </resources>
