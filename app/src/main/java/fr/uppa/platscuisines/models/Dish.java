@@ -1,10 +1,12 @@
 package fr.uppa.platscuisines.models;
 
+import java.io.Serializable;
+
 /**
  * Created by mbsanchez on 21/02/2018.
  */
 
-public class Dish {
+public class Dish implements Serializable{
     private String nomPlat;
     private int conditionnePour2;
     private int conditionnePour4;
