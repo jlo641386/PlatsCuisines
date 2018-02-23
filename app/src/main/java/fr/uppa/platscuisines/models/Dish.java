@@ -1,17 +1,30 @@
 package fr.uppa.platscuisines.models;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
 import java.io.Serializable;
 
 /**
  * Created by mbsanchez on 21/02/2018.
  */
 
+@Entity(tableName = "platscuisines")
 public class Dish implements Serializable{
+    @PrimaryKey
+    private int idPlat;
+    @ColumnInfo
     private String nomPlat;
+    @ColumnInfo
     private int conditionnePour2;
+    @ColumnInfo
     private int conditionnePour4;
+    @ColumnInfo( name = "conditionnePour6")
     private int conditionnePour6;
+    @ColumnInfo
     private int conditionnePour8;
+    @ColumnInfo
     private int conditionnePour12;
 
     public Dish(String nomPlat, int conditionnePour2, int conditionnePour4, int conditionnePour6,
@@ -22,6 +35,14 @@ public class Dish implements Serializable{
         this.conditionnePour6 = conditionnePour6;
         this.conditionnePour8 = conditionnePour8;
         this.conditionnePour12 = conditionnePour12;
+    }
+
+    public int getIdPlat() {
+        return idPlat;
+    }
+
+    public void setIdPlat(int idPlat) {
+        this.idPlat = idPlat;
     }
 
     public String getNomPlat() {
