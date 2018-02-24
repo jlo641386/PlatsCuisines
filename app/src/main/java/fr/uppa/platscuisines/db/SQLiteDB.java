@@ -5,6 +5,7 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 
 import fr.uppa.platscuisines.MyApp;
+import fr.uppa.platscuisines.db.sqlasset.AssetSQLiteOpenHelperFactory;
 import fr.uppa.platscuisines.models.Dish;
 
 /**
@@ -20,10 +21,13 @@ public abstract class SQLiteDB extends RoomDatabase {
             instance = Room.databaseBuilder(MyApp.getAppContext(),
                     SQLiteDB.class,
                     "bdplatscuisines.db")
+                    .openHelperFactory(new AssetSQLiteOpenHelperFactory())
                     .allowMainThreadQueries()
                     .build();
         }
 
         return instance;
     }
+
+    public abstract DishDAO getDishDao();
 }
