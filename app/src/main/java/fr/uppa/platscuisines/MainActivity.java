@@ -9,16 +9,22 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import javax.inject.Inject;
+
+import fr.uppa.platscuisines.db.DishDAO;
 import fr.uppa.platscuisines.db.SQLiteDB;
 import fr.uppa.platscuisines.models.Dish;
 import fr.uppa.platscuisines.models.DishBuilder;
 
 public class MainActivity extends AppCompatActivity {
+    @Inject
+    DishDAO dishDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ((MyApp)getApplication()).getDataComponent().inject(this);
     }
 
     public void handleOK(View view){
@@ -35,8 +41,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        Dish dish = SQLiteDB.getInstance().getDishDao().
-                findByName(dishName.getText().toString());
+        Dish dish = dishDAO.findByName(dishName.getText().toString());
 
         if(dish == null){
             Toast toast = Toast.makeText(getApplicationContext(),
