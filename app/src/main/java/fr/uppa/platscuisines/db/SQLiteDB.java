@@ -12,7 +12,7 @@ import fr.uppa.platscuisines.models.Dish;
  * Created by mbsanchez on 22/02/2018.
  */
 
-@Database(entities = Dish.class, version = 1)
+@Database(entities = Dish.class, version = 1, exportSchema = false)
 public abstract class SQLiteDB extends RoomDatabase {
     private static SQLiteDB instance = null;
 
