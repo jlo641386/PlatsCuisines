@@ -1,126 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     tools:context="fr.uppa.platscuisines.MainActivity">
+    <data>
+        <variable
+            name="viewModel"
+            type="fr.uppa.platscuisines.DishViewModel" />
+    </data>
 
-    <EditText
-        android:id="@+id/dishName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="@string/dishNameHint"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/packagesType"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/packageSection"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dishName" />
-
-    <android.support.v7.widget.GridLayout
-        android:id="@+id/gridLayout2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:alignmentMode="alignBounds"
-        app:columnCount="2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/packagesType"
-        app:rowCount="3">
-
-        <Switch
-            android:id="@+id/packof2"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/dishName"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:text="@string/packof2"
-            app:layout_column="0"
-            app:layout_columnWeight="1"
-            app:layout_gravity="fill"
-            app:layout_row="0" />
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:hint="@string/dishNameHint"
+            android:inputType="textPersonName"
+            android:text='@={viewModel.dish.nomPlat}'
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <Switch
-            android:id="@+id/packof4"
+        <TextView
+            android:id="@+id/packagesType"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/packageSection"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dishName" />
+
+        <android.support.v7.widget.GridLayout
+            android:id="@+id/gridLayout2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:alignmentMode="alignBounds"
+            app:columnCount="2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/packagesType"
+            app:rowCount="3">
+
+            <Switch
+                android:id="@+id/packof2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:text="@string/packof2"
+                android:checked="@={viewModel.conditionnePour2}"
+                app:layout_column="0"
+                app:layout_columnWeight="1"
+                app:layout_gravity="fill"
+                app:layout_row="0" />
+
+            <Switch
+                android:id="@+id/packof4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:text="@string/packof4"
+                android:checked="@={viewModel.conditionnePour4}"
+                app:layout_column="1"
+                app:layout_columnWeight="1"
+                app:layout_gravity="fill"
+                app:layout_row="0" />
+
+            <Switch
+                android:id="@+id/packof6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:text="@string/packof6"
+                android:checked="@={viewModel.conditionnePour6}"
+                app:layout_column="0"
+                app:layout_columnWeight="1"
+                app:layout_gravity="fill"
+                app:layout_row="1" />
+
+            <Switch
+                android:id="@+id/packof8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:text="@string/packof8"
+                android:checked="@={viewModel.conditionnePour8}"
+                app:layout_column="1"
+                app:layout_columnWeight="1"
+                app:layout_gravity="fill"
+                app:layout_row="1" />
+
+            <Switch
+                android:id="@+id/packof12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:text="@string/packof12"
+                android:checked="@={viewModel.conditionnePour12}"
+                app:layout_column="0"
+                app:layout_columnWeight="1"
+                app:layout_gravity="fill"
+                app:layout_row="2" />
+
+        </android.support.v7.widget.GridLayout>
+
+        <Button
+            android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:text="@string/packof4"
-            app:layout_column="1"
-            app:layout_columnWeight="1"
-            app:layout_gravity="fill"
-            app:layout_row="0" />
+            android:onClick="@{viewModel::handleOK}"
+            android:text="@string/buttonOK"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginRight="16dp" />
 
-        <Switch
-            android:id="@+id/packof6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:text="@string/packof6"
-            app:layout_column="0"
-            app:layout_columnWeight="1"
-            app:layout_gravity="fill"
-            app:layout_row="1" />
-
-        <Switch
-            android:id="@+id/packof8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:text="@string/packof8"
-            app:layout_column="1"
-            app:layout_columnWeight="1"
-            app:layout_gravity="fill"
-            app:layout_row="1" />
-
-        <Switch
-            android:id="@+id/packof12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:text="@string/packof12"
-            app:layout_column="0"
-            app:layout_columnWeight="1"
-            app:layout_gravity="fill"
-            app:layout_row="2" />
-
-    </android.support.v7.widget.GridLayout>
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"
-        android:onClick="handleOK"
-        android:text="@string/buttonOK"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-</android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>
