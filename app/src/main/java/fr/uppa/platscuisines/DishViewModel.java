@@ -64,9 +64,34 @@ public class DishViewModel extends BaseObservable {
     public boolean getConditionnePour12() {
         return dish.getConditionnePour12()!=0;
     }
-
     public void setConditionnePour12(boolean conditionnePour12) {
         dish.setConditionnePour12(conditionnePour12?1:0);
         notifyChange();
+    }
+
+    public void handleOK(View view){
+        Intent intent = new Intent(view.getContext(), DisplayDishActivity.class);
+        boolean error = false;
+        String errorMsg = null;
+
+        if (dish.getNomPlat()==null || dish.getNomPlat().isEmpty()){
+            errorMsg = "Enter the Dish's name";
+            error=true;
+        } else if(!getConditionnePour2() && !getConditionnePour4() && !getConditionnePour6() &&
+                !getConditionnePour8() && !getConditionnePour12()){
+            errorMsg = "Select at least a pack presentation";
+            error = true;
+        }
+
+        if(error){
+            Toast toast = Toast.makeText(view.getContext(), errorMsg, Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+            toast.show();
+
+            return;
+        }
+
+        intent.putExtra("dish", dish);
+        view.getContext().startActivity(intent);
     }
 }
