@@ -12,4 +12,5 @@ import dagger.Component;
 @Component(modules = {AppModule.class})
 public interface DataComponent {
     void inject(MainActivity mainActivity);
+    void inject(DishViewActivity mainActivity);
 }
