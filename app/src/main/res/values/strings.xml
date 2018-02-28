@@ -10,4 +10,6 @@
     <string name="buttonOK">OK</string>
     <string name="dishInfo">Dish Information</string>
     <string name="packDisponibility">Pack Disponibility</string>
+    <string name="addDish">ADD</string>
+    <string name="moreInfo">MORE INFO</string>
 </resources>
