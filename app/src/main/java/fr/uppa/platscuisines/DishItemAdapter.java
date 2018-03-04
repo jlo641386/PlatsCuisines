@@ -51,6 +51,8 @@ public class DishItemAdapter extends RecyclerView.Adapter<DishItemAdapter.ViewHo
         viewHolder.packOf6.setEnabled(dish.getConditionnePour6()==1);
         viewHolder.packOf8.setEnabled(dish.getConditionnePour8()==1);
         viewHolder.packOf12.setEnabled(dish.getConditionnePour12()==1);
+        viewHolder.addToOrder.setTag(dish.getIdPlat());
+        viewHolder.moreInfo.setTag(dish.getIdPlat());
 
         Glide.with(context)
                 .load("https://github.com/mbsanchez/PlatsCuisines/raw/master/imgs/"+dish.getIdPlat()+".png")
@@ -73,6 +75,7 @@ public class DishItemAdapter extends RecyclerView.Adapter<DishItemAdapter.ViewHo
         public TextView packOf8;
         public TextView packOf12;
         public ImageView dishImage;
+        public TextView addToOrder, moreInfo;
 
         public ViewHolder(View itemLayoutView) {
             super(itemLayoutView);
@@ -83,6 +86,8 @@ public class DishItemAdapter extends RecyclerView.Adapter<DishItemAdapter.ViewHo
             packOf8 = itemLayoutView.findViewById(R.id.pack8);
             packOf12 = itemLayoutView.findViewById(R.id.pack12);
             dishImage = itemLayoutView.findViewById(R.id.dishImage);
+            addToOrder = itemLayoutView.findViewById(R.id.addDishAction);
+            moreInfo = itemLayoutView.findViewById(R.id.moreInfoAction);
         }
     }
 }
