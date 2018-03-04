@@ -20,5 +20,5 @@ public interface DishDAO {
     Dish findByName(String name);
 
     @Query("SELECT * FROM platscuisines WHERE idPlat=:id")
-    Dish findById(String id);
+    Dish findById(int id);
 }
