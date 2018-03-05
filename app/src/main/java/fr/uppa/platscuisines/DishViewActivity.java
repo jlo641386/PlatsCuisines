@@ -1,5 +1,6 @@
 package fr.uppa.platscuisines;
 
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,6 +10,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.inject.Inject;
 
@@ -17,7 +20,7 @@ import fr.uppa.platscuisines.models.Dish;
 import fr.uppa.platscuisines.models.DishOrderItemBuilder;
 import fr.uppa.platscuisines.models.SaveOrderFacade;
 
-public class DishViewActivity extends AppCompatActivity {
+public class DishViewActivity extends AppCompatActivity implements Observer{
     @Inject
     DishDAO dishDAO;
 
@@ -44,6 +47,9 @@ public class DishViewActivity extends AppCompatActivity {
         // specify an adapter (see also next example)
         mAdapter = new DishItemAdapter(getApplicationContext(), dishes);
         mRecyclerView.setAdapter(mAdapter);
+
+        saveOrderFacade.addObserver(this);
+        saveOrderFacade.clearOrder();
     }
 
     public void addDishToOrder(View view){
@@ -79,5 +85,15 @@ public class DishViewActivity extends AppCompatActivity {
         saveOrderFacade.saveOrder(getApplicationContext());
         saveOrderFacade.sendOrder(getApplicationContext());
         saveOrderFacade.clearOrder();
+    }
+
+    @Override
+    public void update(Observable observable, Object o) {
+        FloatingActionButton button = findViewById(R.id.sendOrder);
+
+        if(saveOrderFacade.orderSize()==0)
+            button.hide();
+        else
+            button.show();
     }
 }
