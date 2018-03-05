@@ -14,12 +14,13 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
 /**
  * Created by mbsanchez on 01/03/2018.
  */
 
-public class SaveOrderFacade {
+public class SaveOrderFacade extends Observable {
     public static String ORDER_FILE_NAME = "order.csv";
     List<DishOrderItem> order;
 
@@ -29,6 +30,8 @@ public class SaveOrderFacade {
 
     public void addItem(DishOrderItem item){
         order.add(item);
+        setChanged();
+        notifyObservers();
     }
 
     public int orderSize(){
@@ -37,6 +40,8 @@ public class SaveOrderFacade {
 
     public void clearOrder(){
         order.clear();
+        setChanged();
+        notifyObservers();
     }
 
     public boolean saveOrder(Context context){
